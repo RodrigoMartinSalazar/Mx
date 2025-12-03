@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESNUDO MÉXICO - La verdad duele… pero libera</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', 'Arial Bold', Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, #000 0%, #1a0000 100%);
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #DC2626;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #999;
+            margin-bottom: 60px;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        .question {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .choices {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 60px;
+            font-size: 1.5rem;
+            text-align: left;
+        }
+
+        .choice {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .choice.highlight {
+            color: #DC2626;
+            font-size: 1.6rem;
+        }
+
+        .cta-button {
+            background-color: #DC2626;
+            color: #fff;
+            border: none;
+            padding: 25px 60px;
+            font-size: 1.8rem;
+            font-weight: 900;
+            cursor: pointer;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #991b1b;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.5);
+        }
+
+        .secondary-button {
+            background-color: #333;
+            color: rgba(255, 255, 255, 0.6);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .secondary-button:hover {
+            background-color: #1a1a1a;
+        }
+
+        /* Problema Section */
+        .section {
+            padding: 100px 20px;
+            border-top: 2px solid #DC2626;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: #DC2626;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .section-content {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #ccc;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .highlight-text {
+            color: #DC2626;
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background-color: #1a1a1a;
+            padding: 40px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #DC2626;
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #DC2626;
+            text-transform: uppercase;
+        }
+
+        .feature-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #999;
+            font-weight: normal;
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: #DC2626;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+
+        /* Manifesto Section */
+        .manifesto {
+            background: linear-gradient(180deg, #1a0000 0%, #000 100%);
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .manifesto-text {
+            font-size: 2rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: #fff;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #DC2626;
+            margin: 40px auto;
+            max-width: 700px;
+            padding: 30px;
+            border-left: 5px solid #DC2626;
+            text-align: left;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 60px 20px 40px;
+            border-top: 2px solid #DC2626;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #DC2626;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section ul {
+            color: #999;
+            line-height: 1.8;
+            font-weight: normal;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #DC2626;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #666;
+            font-weight: normal;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .question {
+                font-size: 2rem;
+            }
+
+            .choices {
+                font-size: 1.2rem;
+            }
+
+            .cta-button {
+                padding: 20px 40px;
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-content {
+                font-size: 1.1rem;
+            }
+
+            .manifesto-text {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Download buttons */
+        .download-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .download-btn {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px 40px;
+            border: 2px solid #DC2626;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            background-color: #DC2626;
+            transform: translateY(-5px);
+        }
+
+        .soon {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .soon:hover {
+            background-color: #1a1a1a;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="logo pulse">🔴 DESNUDO MÉXICO</div>
+    <div class="tagline">La verdad duele… pero libera</div>
+
+    <h1 class="question">¿QUÉ PREFIERES?</h1>
+
+    <div class="choices">
+        <div class="choice">☞ Un dulce que te mantenga dormido</div>
+        <div class="choice highlight">☞ La verdad aunque te arda</div>
+    </div>
+
+    <button class="cta-button" onclick="scrollToDownload()">ACEPTAR LA VERDAD</button>
+    <button class="secondary-button" onclick="alert('Entendemos. Pero cuando despiertes, estaremos aquí.')">Prefiero seguir dormido</button>
+</section>
+
+<!-- El Problema -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">EL PROBLEMA</h2>
+        <div class="section-content">
+            <p style="margin-bottom: 30px;">
+                <span class="highlight-text">México no tiene un problema de información.</span><br>
+                Tiene un problema de <span class="highlight-text">CONCIENCIA.</span>
+            </p>
+            <p style="margin-bottom: 20px;">
+                Durante décadas, el pueblo ha sido adormecido con promesas, manipulado con populismo,
+                dividido por colores políticos mientras todos roban por igual.
+            </p>
+            <p>
+                El resultado es un ciclo vicioso: <span class="highlight-text">POPULISMO → PROMESAS VACÍAS → DECEPCIÓN → MÁS POPULISMO</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Las 4 Funciones -->
+<section class="section" style="background-color: #0a0a0a;">
+    <div class="container">
+        <h2 class="section-title">4 HERRAMIENTAS PARA DESPERTAR</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📍</div>
+                <div class="feature-title">MI REALIDAD</div>
+                <p class="feature-desc">
+                    Ve los datos REALES de tu estado y municipio. Homicidios, desaparecidos,
+                    pobreza, presupuesto. No estadísticas nacionales abstractas, TU realidad.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <div class="feature-title">ENTIENDE</div>
+                <p class="feature-desc">
+                    Educación cívica adaptada a TU nivel. Desde niños hasta expertos.
+                    Aprende cómo funciona el gobierno, impuestos, presupuesto y corrupción.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📜</div>
+                <div class="feature-title">HISTORIA</div>
+                <p class="feature-desc">
+                    Línea del tiempo de México. Entiende los patrones: cada vez que el pueblo
+                    se duerme, alguien se aprovecha. Esto NO es la primera vez.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📸</div>
+                <div class="feature-title">FISCALIZA</div>
+                <p class="feature-desc">
+                    Toma foto de corrupción. Denuncia baches, obras fantasma, extorsión.
+                    La IA cruza con datos oficiales y te dice quién robó y cuánto.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+    <div class="container">
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">POR QUÉ ES DIFERENTE</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Datos Oficiales</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Colores Políticos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">32</div>
+                <div class="stat-label">Estados Cubiertos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Open Source</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Manifesto -->
+<section class="manifesto">
+    <div class="container">
+        <h2 class="section-title">NUESTRO MANIFIESTO</h2>
+        <p class="manifesto-text">
+            No es una app. Es un movimiento.<br>
+            No es tecnología. Es conciencia.<br>
+            No es opcional. Es necesario.
+        </p>
+
+        <div class="quote">
+            "Aquí no hay colores, solo números.<br>
+            No es opinión, es presupuesto.<br>
+            El que se enoja con los datos… es porque le duelen."
+        </div>
+
+        <div class="section-content" style="text-align: left; margin-top: 60px;">
+            <h3 style="color: #DC2626; margin-bottom: 20px; font-size: 1.8rem;">Lo que NUNCA haremos:</h3>
+            <ul style="list-style: none; font-size: 1.2rem; line-height: 2;">
+                <li>❌ Vender tus datos</li>
+                <li>❌ Mostrar publicidad</li>
+                <li>❌ Tomar partido político</li>
+                <li>❌ Censurar información verificable</li>
+                <li>❌ Cobrar por la verdad</li>
+            </ul>
+
+            <h3 style="color: #DC2626; margin: 40px 0 20px; font-size: 1.8rem;">Lo que SÍ haremos:</h3>
+            <ul style="list-style: none; font-size: 1.2rem; line-height: 2;">
+                <li>✅ Mostrar datos oficiales sin filtro</li>
+                <li>✅ Proteger tu anonimato</li>
+                <li>✅ Ser 100% open source</li>
+                <li>✅ Actualizar información constantemente</li>
+                <li>✅ Empoderar al ciudadano</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Download Section -->
+<section class="section" id="download">
+    <div class="container" style="text-align: center;">
+        <h2 class="section-title">DESCARGA LA APP</h2>
+        <p class="section-content" style="margin-bottom: 40px;">
+            Disponible para Android. Versión iOS próximamente.
+        </p>
+
+        <div class="download-buttons">
+            <a href="#" class="download-btn">
+                📱 DESCARGAR ANDROID (APK)<br>
+                <span style="font-size: 0.8rem; opacity: 0.7;">Beta v0.1 - Diciembre 2025</span>
+            </a>
+            <a href="#" class="download-btn soon">
+                🍎 iOS (PRÓXIMAMENTE)<br>
+                <span style="font-size: 0.8rem; opacity: 0.7;">En desarrollo</span>
+            </a>
+        </div>
+
+        <p style="margin-top: 40px; color: #999; font-weight: normal;">
+            O visita nuestro GitHub para ver el código fuente y contribuir
+        </p>
+        <a href="#" class="download-btn" style="margin-top: 20px; background-color: #333;">
+            💻 VER EN GITHUB
+        </a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SOBRE EL PROYECTO</h3>
+                <p>
+                    DESNUDO MÉXICO es un proyecto open source sin fines de lucro.
+                    Nuestro objetivo es empoderar al ciudadano con información verificable
+                    para tomar mejores decisiones.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h3>FUENTES OFICIALES</h3>
+                <ul>
+                    <li><a href="https://www.inegi.org.mx" target="_blank">INEGI</a></li>
+                    <li><a href="https://www.transparenciapresupuestaria.gob.mx" target="_blank">SHCP</a></li>
+                    <li><a href="https://www.gob.mx/sesnsp" target="_blank">SESNSP</a></li>
+                    <li><a href="https://www.asf.gob.mx" target="_blank">ASF</a></li>
+                    <li><a href="https://www.coneval.org.mx" target="_blank">CONEVAL</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>COLABORA</h3>
+                <ul>
+                    <li><a href="#">GitHub Repository</a></li>
+                    <li><a href="#">Documentación</a></li>
+                    <li><a href="#">Reportar Bug</a></li>
+                    <li><a href="#">Proponer Feature</a></li>
+                    <li><a href="#">Donar</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>CONTACTO</h3>
+                <p>
+                    Email: contacto@desnudomexico.org<br>
+                    Twitter: @DesnudoMexico<br>
+                    <br>
+                    <strong style="color: #DC2626;">100% Open Source</strong><br>
+                    Licencia MIT (código)<br>
+                    CC BY-SA 4.0 (contenido)
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                DESNUDO MÉXICO © 2025 - Un proyecto para el pueblo, por el pueblo<br>
+                <span style="color: #DC2626; font-weight: bold;">
+                        "La verdad duele… pero libera"
+                    </span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function scrollToDownload() {
+        document.getElementById('download').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Easter egg: Konami code
+    let konamiCode = [];
+    const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
+    document.addEventListener('keydown', (e) => {
+        konamiCode.push(e.key);
+        if (konamiCode.length > konamiSequence.length) {
+            konamiCode.shift();
+        }
+        if (konamiCode.join(',') === konamiSequence.join(',')) {
+            alert('🔴 EASTER EGG DESBLOQUEADO\n\n"El pueblo unido jamás será vencido"\n\nGracias por tu interés en despertar a México.');
+        }
+    });
+</script>
+</body>
+</html>

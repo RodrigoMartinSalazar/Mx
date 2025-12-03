@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESNUDO MÉXICO - Conocimiento para un México libre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --verde-mexico: #006847;
+            --rojo-mexico: #CE1126;
+            --blanco: #FFFFFF;
+            --gris-claro: #f5f5f5;
+            --gris-oscuro: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--gris-oscuro);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(90deg, var(--verde-mexico) 0%, var(--verde-mexico) 33%, var(--blanco) 33%, var(--blanco) 66%, var(--rojo-mexico) 66%);
+            padding: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: white;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--verde-mexico);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--rojo-mexico);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: var(--gris-oscuro);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            padding: 8px 15px;
+            border-radius: 4px;
+        }
+
+        .nav-menu a:hover {
+            color: var(--verde-mexico);
+            background-color: var(--gris-claro);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--verde-mexico);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, var(--verde-mexico) 0%, #004d35 100%);
+            color: white;
+            padding: 100px 30px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            background-color: var(--rojo-mexico);
+            color: white;
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(206, 17, 38, 0.4);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(206, 17, 38, 0.6);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-alt {
+            background-color: var(--gris-claro);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--verde-mexico);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .section-intro {
+            font-size: 1.2rem;
+            color: #555;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+        }
+
+        /* Manifiesto */
+        .manifiesto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .manifiesto-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .manifiesto-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,104,71,0.2);
+        }
+
+        .manifiesto-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .manifiesto-card h3 {
+            color: var(--verde-mexico);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .manifiesto-card p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Content Sections */
+        .content-block {
+            margin-bottom: 60px;
+        }
+
+        .content-block h3 {
+            font-size: 2rem;
+            color: var(--rojo-mexico);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .content-block p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0,104,71,0.1) 0%, rgba(206,17,38,0.1) 100%);
+            padding: 30px;
+            border-left: 5px solid var(--verde-mexico);
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box strong {
+            color: var(--verde-mexico);
+            font-size: 1.2rem;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-top: 4px solid var(--verde-mexico);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0,104,71,0.2);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            color: var(--verde-mexico);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature-desc {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Download Section */
+        .download-section {
+            background: linear-gradient(135deg, var(--rojo-mexico) 0%, #a01020 100%);
+            color: white;
+            padding: 80px 30px;
+            text-align: center;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .download-btn {
+            background-color: white;
+            color: var(--rojo-mexico);
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--gris-oscuro);
+            color: white;
+            padding: 60px 30px 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--verde-mexico);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--verde-mexico);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #555;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-content">
+        <div class="logo">
+            🇲🇽 DESNUDO <span>MÉXICO</span>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#manifiesto">Manifiesto</a></li>
+            <li><a href="#problema">El Problema</a></li>
+            <li><a href="#sistema">Cómo Funciona</a></li>
+            <li><a href="#solucion">La Solución</a></li>
+            <li><a href="#herramientas">Herramientas</a></li>
+            <li><a href="#descarga">Descarga</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="inicio">
+    <h1>Conocimiento para un México Libre</h1>
+    <p class="hero-subtitle">
+        La herramienta que necesitas para entender, cuestionar y transformar tu realidad
+    </p>
+    <button class="hero-cta" onclick="document.getElementById('manifiesto').scrollIntoView({behavior: 'smooth'})">
+        Comienza Aquí
+    </button>
+</section>
+
+<!-- Manifiesto -->
+<section class="section" id="manifiesto">
+    <h2 class="section-title">¿Por Dónde Empezar?</h2>
+    <p class="section-intro">
+        Antes de mostrarte datos, antes de hablarte de corrupción, queremos que entiendas algo fundamental:
+        <strong>el conocimiento es poder, y el poder debe estar en tus manos</strong>.
+    </p>
+
+    <div class="manifiesto-grid">
+        <div class="manifiesto-card">
+            <div class="manifiesto-icon">🧠</div>
+            <h3>No te diremos qué pensar</h3>
+            <p>
+                Solo te daremos las herramientas para que <strong>pienses por ti mismo</strong>.
+                Aquí no hay ideologías, solo información verificable.
+            </p>
+        </div>
+
+        <div class="manifiesto-card">
+            <div class="manifiesto-icon">📊</div>
+            <h3>No te diremos qué hacer</h3>
+            <p>
+                Te mostraremos los datos para que <strong>exijas las propuestas</strong> que alguna vez
+                te prometieron y se olvidaron.
+            </p>
+        </div>
+
+        <div class="manifiesto-card">
+            <div class="manifiesto-icon">🔍</div>
+            <h3>Esta es solo una herramienta</h3>
+            <p>
+                No encontrarás todas las respuestas aquí. Esto es un <strong>punto de partida</strong>
+                para tu propia búsqueda de la verdad.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- El Problema -->
+<section class="section section-alt" id="problema">
+    <h2 class="section-title">Entendiendo el Problema</h2>
+    <p class="section-intro">
+        No se trata de ser negativos. Se trata de ser honestos.
+        Solo cuando entiendes cómo funciona el sistema, puedes cambiarlo.
+    </p>
+
+    <div class="content-block">
+        <h3>1. ¿Cómo es posible la corrupción?</h3>
+        <p>
+            La corrupción no es accidental. Es sistemática. Funciona porque existe una combinación de
+            <strong>falta de transparencia, ausencia de consecuencias, y ciudadanos desinformados</strong>.
+        </p>
+        <p>
+            Cuando un funcionario puede desviar millones sin que nadie lo sepa, sin que nadie lo investigue,
+            y sin que nadie vaya a la cárcel... ¿por qué dejaría de hacerlo?
+        </p>
+        <div class="highlight-box">
+            <strong>La realidad:</strong> En México, menos del 2% de los casos de corrupción terminan
+            en sentencias. El crimen perfecto es el que nadie fiscaliza.
+        </div>
+    </div>
+
+    <div class="content-block">
+        <h3>2. ¿Cómo nos dividen?</h3>
+        <p>
+            El truco más viejo del libro: <strong>divide y vencerás</strong>. Mientras estamos peleando
+            entre "fifís" y "chairos", entre norte y sur, entre clases sociales, nadie está vigilando
+            lo que realmente importa: <strong>a dónde va nuestro dinero</strong>.
+        </p>
+        <p>
+            Los colores políticos no son el problema. El problema es que mientras discutimos de colores,
+            todos los partidos roban sin distinción.
+        </p>
+    </div>
+
+    <div class="content-block">
+        <h3>3. Los programas sociales: ¿ayuda o control?</h3>
+        <p>
+            No todos los programas sociales son malos. Pero muchos están diseñados no para <strong>liberar</strong>,
+            sino para <strong>controlar</strong>.
+        </p>
+        <p>
+            Una despensa a cambio de tu voto. Una beca condicionada a tu lealtad. Un apoyo que no resuelve
+            tu problema de raíz, solo lo aplaza hasta la próxima elección.
+        </p>
+        <div class="highlight-box">
+            <strong>La pregunta correcta:</strong> ¿Este programa me hace más independiente o más dependiente?
+            ¿Me enseña a pescar o solo me regala un pez cada seis años?
+        </div>
+    </div>
+
+    <div class="content-block">
+        <h3>4. ¿Por qué no les exigimos?</h3>
+        <p>
+            Porque <strong>no sabemos cómo</strong>. Porque nos enseñaron a obedecer, no a cuestionar.
+            Porque creemos que "así es México" y que no podemos cambiar nada.
+        </p>
+        <p>
+            Pero la verdad es que un gobernador, un presidente, un alcalde... <strong>trabajan para ti</strong>.
+            Tú les pagas con tus impuestos. Tú les diste el poder con tu voto.
+        </p>
+        <p>
+            Y si no están cumpliendo, no solo tienes el derecho de exigir. <strong>Tienes la obligación</strong>.
+        </p>
+    </div>
+</section>
+
+<!-- Cómo Funciona el Sistema -->
+<section class="section" id="sistema">
+    <h2 class="section-title">¿Cómo Funciona Realmente el Sistema?</h2>
+    <p class="section-intro">
+        Entender el juego es el primer paso para dejar de perderlo.
+    </p>
+
+    <div class="content-block">
+        <h3>¿Cómo llega alguien a ser gobernador o presidente?</h3>
+        <p>
+            En teoría: con propuestas, con planes, con la confianza del pueblo.<br>
+            En la práctica: con dinero, con alianzas, con promesas que no tienen intención de cumplir.
+        </p>
+        <p>
+            El proceso electoral en México cuesta <strong>miles de millones de pesos</strong>. ¿De dónde sale ese dinero?
+            ¿Quién lo pone? Y más importante: <strong>¿qué esperan a cambio?</strong>
+        </p>
+        <div class="highlight-box">
+            <strong>Lo que no te dicen:</strong> Cuando un empresario financia una campaña (legal o ilegalmente),
+            no lo hace por amor a la democracia. Lo hace porque después le van a devolver el favor...
+            con contratos, con concesiones, con tu dinero.
+        </div>
+    </div>
+
+    <div class="content-block">
+        <h3>¿Por qué no se les exige más?</h3>
+        <p>
+            Porque el sistema está diseñado para que sea difícil. Para que te canses. Para que digas
+            "es imposible" y te rindas.
+        </p>
+        <p>
+            Pero aquí está la verdad: <strong>sí se puede</strong>. Otros países lo han logrado.
+            Corea del Sur sacó a una presidenta corrupta a la cárcel. Islandia encarceló a sus banqueros.
+            Guatemala derrocó a un presidente por corrupto.
+        </p>
+        <p>
+            ¿Por qué ellos sí y nosotros no? Porque ellos se informaron, se organizaron, y <strong>no se rindieron</strong>.
+        </p>
+    </div>
+</section>
+
+<!-- La Solución -->
+<section class="section section-alt" id="solucion">
+    <h2 class="section-title">La Solución: Educación y Libre Pensamiento</h2>
+    <p class="section-intro">
+        No hay atajos. No hay mesías. La única forma de cambiar México es con ciudadanos informados,
+        críticos y activos.
+    </p>
+
+    <div class="content-block">
+        <h3>La educación es la clave</h3>
+        <p>
+            No la educación que te enseña a memorizar fechas. La educación que te enseña a
+            <strong>cuestionar, analizar, verificar</strong>.
+        </p>
+        <p>
+            Cuando entiendes cómo funciona el presupuesto, ya no puedes creer que "no hay dinero para hospitales"
+            mientras ves mansiones de funcionarios.
+        </p>
+        <p>
+            Cuando entiendes cómo funciona la división de poderes, ya no puedes creer que
+            "el presidente puede hacer todo" o que "la oposición tiene la culpa de todo".
+        </p>
+    </div>
+
+    <div class="content-block">
+        <h3>El libre pensamiento es tu poder</h3>
+        <p>
+            No necesitas seguir a un líder. No necesitas un partido. No necesitas un color.
+        </p>
+        <p>
+            <strong>Necesitas datos, necesitas criterio, y necesitas valor</strong> para decir "esto está mal"
+            sin importar quién lo esté haciendo.
+        </p>
+        <div class="highlight-box">
+            <strong>El cambio empieza contigo:</strong> Cuando dejas de defender políticos y empiezas a
+            defender principios. Cuando dejas de atacar personas y empiezas a exigir resultados.
+        </div>
+    </div>
+</section>
+
+<!-- Las 4 Herramientas -->
+<section class="section" id="herramientas">
+    <h2 class="section-title">4 Herramientas para Despertar</h2>
+    <p class="section-intro">
+        No te damos las respuestas. Te damos las herramientas para que las encuentres.
+    </p>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">📍</div>
+            <h3 class="feature-title">MI REALIDAD</h3>
+            <p class="feature-desc">
+                Los datos de TU estado, TU municipio, TU colonia. No estadísticas nacionales abstractas.
+                Tu realidad, con números oficiales.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🎓</div>
+            <h3 class="feature-title">ENTIENDE</h3>
+            <p class="feature-desc">
+                Educación cívica adaptada a tu nivel. Desde lo más básico hasta lo más avanzado.
+                Aprende cómo funciona tu país.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📜</div>
+            <h3 class="feature-title">HISTORIA</h3>
+            <p class="feature-desc">
+                Los patrones se repiten. Entiende el pasado para no repetir los mismos errores.
+                La historia que no te contaron completa.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📸</div>
+            <h3 class="feature-title">FISCALIZA</h3>
+            <p class="feature-desc">
+                Tú eres la contraloría. Documenta, denuncia, exige. Con datos oficiales y herramientas reales.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Descarga -->
+<section class="download-section" id="descarga">
+    <h2 style="font-size: 2.5rem; margin-bottom: 20px; font-weight: 800;">
+        El Conocimiento es Libre
+    </h2>
+    <p style="font-size: 1.3rem; margin-bottom: 30px; opacity: 0.95;">
+        100% gratuito. 100% sin anuncios. 100% open source.
+    </p>
+    <p style="font-size: 1.1rem; margin-bottom: 10px;">
+        Porque la verdad no debe costar dinero.
+    </p>
+
+    <div class="download-buttons">
+        <a href="#" class="download-btn">
+            📱 Descargar para Android
+        </a>
+        <a href="#" class="download-btn" style="opacity: 0.6;">
+            🍎 iOS (Próximamente)
+        </a>
+        <a href="#" class="download-btn">
+            💻 Ver en GitHub
+        </a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Sobre el Proyecto</h3>
+            <p style="color: #ccc; line-height: 1.8;">
+                DESNUDO MÉXICO es un proyecto ciudadano, open source y sin fines de lucro.
+                Nuestro único objetivo es poner el poder de la información en tus manos.
+            </p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Fuentes Oficiales</h3>
+            <ul>
+                <li><a href="https://www.inegi.org.mx" target="_blank">INEGI</a></li>
+                <li><a href="https://www.transparenciapresupuestaria.gob.mx" target="_blank">SHCP</a></li>
+                <li><a href="https://www.gob.mx/sesnsp" target="_blank">SESNSP</a></li>
+                <li><a href="https://www.asf.gob.mx" target="_blank">ASF</a></li>
+                <li><a href="https://www.coneval.org.mx" target="_blank">CONEVAL</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Colabora</h3>
+            <ul>
+                <li><a href="#">GitHub Repository</a></li>
+                <li><a href="#">Documentación</a></li>
+                <li><a href="#">Reportar un Error</a></li>
+                <li><a href="#">Sugerir Mejoras</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Principios</h3>
+            <ul style="color: #ccc;">
+                <li>✓ 100% datos verificables</li>
+                <li>✓ Sin sesgos políticos</li>
+                <li>✓ Sin publicidad</li>
+                <li>✓ Sin venta de datos</li>
+                <li>✓ Código abierto</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            DESNUDO MÉXICO © 2025 - Proyecto Ciudadano Open Source<br>
+            <strong style="color: var(--verde-mexico);">
+                "El conocimiento libera. La ignorancia esclaviza."
+            </strong>
+        </p>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('navMenu');
+        menu.classList.toggle('active');
+    }
+
+    // Cerrar menú al hacer click en un enlace (móvil)
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                document.getElementById('navMenu').classList.remove('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>
